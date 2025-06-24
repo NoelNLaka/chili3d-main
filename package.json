@@ -12,7 +12,8 @@
         "testc": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
         "prettier": "npx prettier --write .",
         "release": "node scripts/release.mjs",
-        "setup:wasm": "node scripts/setup_wasm_deps.mjs"
+        "setup:wasm": "node scripts/setup_wasm_deps.mjs",
+        "netlify-build": "node scripts/netlify-build.mjs"
     },
     "simple-git-hooks": {
         "pre-commit": "npx lint-staged"
