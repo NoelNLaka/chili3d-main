@@ -1,0 +1,16 @@
+[build]
+  base = "/"
+  command = "npm run netlify-build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[context.production.environment]
+  Emscripten = "true"
+  CMAKE = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
