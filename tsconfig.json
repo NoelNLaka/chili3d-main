@@ -11,8 +11,10 @@
         "strict": true,
         "esModuleInterop": true,
         "resolveJsonModule": true,
-        "plugins": [{ "name": "typescript-plugin-css-modules" }]
+        "plugins": [{ "name": "typescript-plugin-css-modules" }],
+        "outDir": "./dist",
+        "rootDir": "./packages"
     },
     "include": ["packages"],
-    "exclude": ["packages/chili-occ/occ-wasm", "packages/chili-wasm/lib"]
+    "exclude": ["packages/chili-occ/occ-wasm", "packages/chili-wasm/lib", "packages/**/test/**/*"]
 }
