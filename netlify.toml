@@ -1,6 +1,6 @@
 [build]
   base = "/"
-  command = "npm run setup-cmake && npm run netlify-build"
+  command = "export PATH=/opt/build/repo/cpp/build/cmake/bin:$PATH && npm run setup-cmake && npm run netlify-build"
   publish = "public"
 
 [build.environment]

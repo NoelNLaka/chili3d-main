@@ -1,5 +1,7 @@
 import { execSync } from 'child_process';
 
+process.env.PATH = "/opt/build/repo/cpp/build/cmake/bin:" + process.env.PATH;
+
 // Build WASM dependencies
 console.log('Building WASM dependencies...');
 try {
