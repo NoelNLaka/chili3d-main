@@ -39,3 +39,10 @@ try {
 process.env.PATH = `${cmakeDir}/bin:${process.env.PATH}`;
 
 console.log('CMake 3.30.0 installed successfully!');
+
+try {
+    execSync('apt-get update && apt-get install -y ninja-build', { stdio: 'inherit' });
+} catch (error) {
+    console.error('Failed to install Ninja:', error);
+    process.exit(1);
+}
