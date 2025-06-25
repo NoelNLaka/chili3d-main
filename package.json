@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "npx rspack dev",
         "build": "npx rspack build",
-        "build:wasm": "cd cpp && cmake -G Ninja --preset release && cmake --build --preset release",
+        "build:wasm": "cd cpp && cmake -G \"Unix Makefiles\" --preset release && cmake --build --preset release",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
         "testc": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
         "prettier": "npx prettier --write .",
