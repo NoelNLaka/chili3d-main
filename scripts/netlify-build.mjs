@@ -1,23 +1,26 @@
 import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
-process.env.PATH = "/opt/build/repo/cpp/build/cmake/bin:" + process.env.PATH;
+// Copy prebuilt WASM artifacts to public directory
+const wasmArtifacts = [
+    'chili-wasm.wasm',
+    'chili-wasm.js',
+    'chili-wasm.d.ts',
+];
+const srcDir = path.resolve('packages/chili-wasm/lib');
+const destDir = path.resolve('public');
 
-// Build WASM dependencies
-console.log('Building WASM dependencies...');
-try {
-    execSync('npm run setup:wasm', { stdio: 'inherit', env: { ...process.env, PATH: `${process.env.PATH}` } });
-} catch (error) {
-    console.error('Failed to setup WASM dependencies:', error);
-    process.exit(1);
-}
-
-// Build WASM
-console.log('Building WASM...');
-try {
-    execSync('npm run build:wasm', { stdio: 'inherit', env: { ...process.env, PATH: `${process.env.PATH}` } });
-} catch (error) {
-    console.error('Failed to build WASM:', error);
-    process.exit(1);
+console.log('Copying prebuilt WASM artifacts to public/ ...');
+for (const file of wasmArtifacts) {
+    const src = path.join(srcDir, file);
+    const dest = path.join(destDir, file);
+    if (fs.existsSync(src)) {
+        fs.copyFileSync(src, dest);
+        console.log(`Copied ${file} to public/`);
+    } else {
+        console.warn(`Warning: ${file} not found in ${srcDir}`);
+    }
 }
 
 // Build frontend
