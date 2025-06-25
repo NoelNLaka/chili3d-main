@@ -1,6 +1,6 @@
 [build]
   base = "/"
-  command = "export PATH=/usr/bin:/opt/build/repo/cpp/build/cmake/bin:$PATH && npm run setup-cmake && npm run netlify-build"
+  command = "export PATH=/opt/build/repo/cpp/build/cmake/bin:$PATH && npm run setup-cmake && npm run netlify-build"
   publish = "public"
 
 [build.environment]
@@ -14,3 +14,11 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[plugins]]
+  package = "@netlify/plugin-cache"
+  [plugins.inputs]
+    paths = [
+      "cpp/build/occt",
+      "cpp/build/emsdk"
+    ]
